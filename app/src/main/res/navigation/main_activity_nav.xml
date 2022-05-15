@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mehmet.genc.mywallet.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_receiptFragment"
+            app:destination="@id/receiptFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardFragment"
+        android:name="com.mehmet.genc.mywallet.fragment.card.CardFragment"
+        android:label="CardFragment" >
+        <action
+            android:id="@+id/action_cardFragment_to_cardDetailFragment"
+            app:destination="@id/cardDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardDetailFragment"
+        android:name="com.mehmet.genc.mywallet.fragment.card.CardDetailFragment"
+        android:label="CardDetailFragment" >
+        <argument
+            android:name="card"
+            app:argType="com.mehmet.genc.mywallet.entity.Card" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiptFragment"
+        android:name="com.mehmet.genc.mywallet.fragment.receipt.ReceiptFragment"
+        android:label="ReceiptFragment" >
+        <action
+            android:id="@+id/action_receiptFragment_to_receiptDetailFragment"
+            app:destination="@id/receiptDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiptDetailFragment"
+        android:name="com.mehmet.genc.mywallet.fragment.receipt.ReceiptDetailFragment"
+        android:label="fragment_receipt_detail"
+        tools:layout="@layout/fragment_receipt_detail" >
+        <argument
+            android:name="payment"
+            app:argType="com.mehmet.genc.mywallet.entity.Payment" />
+    </fragment>
+</navigation>
