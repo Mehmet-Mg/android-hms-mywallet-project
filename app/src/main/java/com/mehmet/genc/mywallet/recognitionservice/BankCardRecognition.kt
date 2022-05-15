@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.util.Log
 import android.widget.Toast
+import com.mehmet.genc.mywallet.R
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.huawei.hms.mlplugin.card.bcr.MLBcrCapture
@@ -21,7 +22,6 @@ class BankCardRecognition(var activity: Activity, var viewModel: CardViewModel) 
 
     private val callback: MLBcrCapture.Callback = object : MLBcrCapture.Callback {
         override fun onSuccess(bankCardResult: MLBcrCaptureResult?) {
-            Toast.makeText(activity.applicationContext, "Başarılı ${bankCardResult?.number}", Toast.LENGTH_LONG).show()
             viewModel.addCard(
                 Card(
                 0,
@@ -30,13 +30,13 @@ class BankCardRecognition(var activity: Activity, var viewModel: CardViewModel) 
                 "${bankCardResult?.organization}",
                 "${bankCardResult?.expire}")
             )
-            Toast.makeText(activity.applicationContext, "Successful", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity.applicationContext, activity.applicationContext.getText(R.string.successful), Toast.LENGTH_SHORT).show()
         }
 
         override fun onCanceled() {}
 
         override fun onFailure(p0: Int, p1: Bitmap?) {
-            Toast.makeText(activity.applicationContext, "Failed, Please Try Again!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity.applicationContext, activity.applicationContext.getText(R.string.failure), Toast.LENGTH_SHORT).show()
         }
 
         override fun onDenied() {}

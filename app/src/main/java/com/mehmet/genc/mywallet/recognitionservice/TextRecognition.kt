@@ -12,6 +12,7 @@ import com.huawei.hms.mlsdk.MLAnalyzerFactory
 import com.huawei.hms.mlsdk.common.MLApplication
 import com.huawei.hms.mlsdk.common.MLFrame
 import com.huawei.hms.mlsdk.text.MLRemoteTextSetting
+import com.mehmet.genc.mywallet.R
 import com.mehmet.genc.mywallet.entity.Payment
 import com.mehmet.genc.mywallet.fragment.receipt.ReceiptFragmentDirections
 import com.mehmet.genc.mywallet.viewmodel.PaymentViewModel
@@ -47,10 +48,10 @@ class TextRecognition(var context: Context, var viewModel: PaymentViewModel) {
                 getAmount(items),
                 getDate(items))
             viewModel.addPayment(payment)
-            Toast.makeText(context, "Successful", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getText(R.string.successful), Toast.LENGTH_SHORT).show()
 
         }.addOnFailureListener {
-            Toast.makeText(context, "Failed, Please Try Again!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getText(R.string.failure), Toast.LENGTH_SHORT).show()
         }
 
         if(analyzer!=null) {

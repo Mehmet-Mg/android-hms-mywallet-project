@@ -3,7 +3,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cards_text">Cards</string>
-    <string name="number_of_card">Number of Card:</string>
     <string name="payments">Payments</string>
     <string name="total_text">Total:</string>
     <string name="update_the_card">Update The Card</string>
@@ -15,4 +14,18 @@
     <string name="name">Name</string>
     <string name="amount">Amount</string>
     <string name="date">Date</string>
+
+    <string name="successful">Successful</string>
+    <string name="failure">Failed, Please Try Again!</string>
+    <string name="payment_updated">Payment Updated</string>
+    <string name="card_updated">Card Updated</string>
+    <string name="card_digit_error">Card number must be 16 digit</string>
+    <string name="number_of_card">Number of card: %s</string>
+    <string name="total_of_payment">Total: %s ₺</string>
+    <string name="card_name">Card Name</string>
+    <string name="card_number">Card Number</string>
+    <string name="card_organization">Card Organization</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="name_payment">Name</string>
+    <string name="total">Amount</string>
 </resources>

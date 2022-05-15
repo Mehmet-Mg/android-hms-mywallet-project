@@ -52,9 +52,9 @@ class CardDetailFragment : Fragment() {
     fun updateCard(cardId: Int, cardName: String, cardNumber: String, cardOrganization: String, cardExpieryDate: String) {
         if(binding.editTextCardNumber.length() == 16) {
             viewModel.updateCard(Card(cardId, cardName,cardNumber,cardOrganization, cardExpieryDate))
-            Toast.makeText(context, "The Card Updated", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, this.getText(R.string.card_updated), Toast.LENGTH_SHORT).show()
         } else {
-            binding.editTextCardNumber.error = "Card number must be 16 digit"
+            binding.editTextCardNumber.error = getText(R.string.card_digit_error)
         }
     }
 }

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Cüzdanım</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="cards_text">Kartlar</string>
+    <string name="payments">Ödemeler</string>
+    <string name="total_text">Toplam: </string>
+    <string name="update_the_card">Kartı Güncelle</string>
+    <string name="pick_a_photo">Fotoğraf Seç</string>
+    <string name="from_phone">Telefondan</string>
+    <string name="capture_photo">Fotoğraf Çek</string>
+    <string name="from_camera">Kameradan</string>
+    <string name="update_payment">Ödeme Güncelle</string>
+    <string name="name">Ad</string>
+    <string name="amount">Tutar</string>
+    <string name="date">Tarih</string>
+
+    <string name="successful">Başarılı</string>
+    <string name="failure">Başarısız, Lütfen Tekrar Deneyiniz!</string>
+    <string name="payment_updated">Ödeme Güncellendi</string>
+    <string name="card_updated">Kart Güncellendir</string>
+    <string name="card_digit_error">Kart Numarası 16 haneli olmalı</string>
+    <string name="number_of_card">Kayıtlı Kart Sayısı: %s</string>
+    <string name="total_of_payment">Toplam Tutar: %s ₺</string>
+    <string name="card_name">Kart İsmi</string>
+    <string name="card_number">Kart Numarası</string>
+    <string name="card_organization">Kart Organizasyonu</string>
+    <string name="expiry_date">Son Kullanma Tarihi</string>
+    <string name="name_payment">Ödeme İsmi</string>
+    <string name="total">Tutar</string>
+</resources>

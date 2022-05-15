@@ -32,7 +32,7 @@
                 android:id="@+id/editTextCardName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Card Name"
+                android:hint="@string/card_name"
                 android:text="@{cardObject.name}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLength="16"
-                android:hint="Card Number"
+                android:hint="@string/card_number"
                 android:text="@{cardObject.number}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,7 +71,7 @@
                 android:id="@+id/editTextCardOrganization"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Card Organization"
+                android:hint="@string/card_organization"
                 android:text="@{cardObject.organization}" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="date"
                 android:maxLength="5"
-                android:hint="Expiry Date"
+                android:hint="@string/expiry_date"
                 android:text="@{cardObject.expiry_date}"/>
         </com.google.android.material.textfield.TextInputLayout>
 

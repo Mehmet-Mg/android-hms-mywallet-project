@@ -42,7 +42,7 @@ class ReceiptDetailFragment : Fragment() {
 
     fun updatePayment(paymentId: Int, paymentName: String, paymentAmount: String, paymentDate: String) {
         viewModel.updatePayment(Payment(paymentId, paymentName, paymentAmount, paymentDate))
-        Toast.makeText(requireContext(), "Payment Updated", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), this.getText(R.string.payment_updated), Toast.LENGTH_SHORT).show()
     }
 
 }

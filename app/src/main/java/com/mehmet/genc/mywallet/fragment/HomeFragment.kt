@@ -30,12 +30,11 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding= FragmentHomeBinding.inflate(layoutInflater, container, false)
-
         requestPermission()
 
         viewModel.cardList.observe(viewLifecycleOwner) {
             var cardCount = it.size
-            binding.textViewNumberCard.text = "Number of card: $cardCount"
+            binding.textViewNumberCard.text = String.format(getString(R.string.number_of_card), "$cardCount")
         }
 
         viewModel.paymentList.observe(viewLifecycleOwner) { payments ->
@@ -45,7 +44,7 @@ class HomeFragment : Fragment() {
                     total += payment.amount.toDouble()
                 }
             }
-            binding.textViewTotalPayment.text = "Total: $total ₺"
+            binding.textViewTotalPayment.text = String.format(getString(R.string.total_of_payment), "$total")
         }
 
         return binding.root
