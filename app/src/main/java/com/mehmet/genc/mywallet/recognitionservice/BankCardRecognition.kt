@@ -30,12 +30,14 @@ class BankCardRecognition(var activity: Activity, var viewModel: CardViewModel) 
                 "${bankCardResult?.organization}",
                 "${bankCardResult?.expire}")
             )
-            Log.d("Deneme", "Tamamdır.")
+            Toast.makeText(activity.applicationContext, "Successful", Toast.LENGTH_SHORT).show()
         }
 
         override fun onCanceled() {}
 
-        override fun onFailure(p0: Int, p1: Bitmap?) {}
+        override fun onFailure(p0: Int, p1: Bitmap?) {
+            Toast.makeText(activity.applicationContext, "Failed, Please Try Again!", Toast.LENGTH_SHORT).show()
+        }
 
         override fun onDenied() {}
 

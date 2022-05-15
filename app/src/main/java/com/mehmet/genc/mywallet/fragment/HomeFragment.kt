@@ -2,7 +2,6 @@ package com.mehmet.genc.mywallet.fragment
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,25 +12,16 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.huawei.hms.mlplugin.card.bcr.MLBcrCapture
-import com.huawei.hms.mlplugin.card.bcr.MLBcrCaptureConfig
-import com.huawei.hms.mlplugin.card.bcr.MLBcrCaptureFactory
-import com.huawei.hms.mlplugin.card.bcr.MLBcrCaptureResult
 import com.mehmet.genc.mywallet.R
 import com.mehmet.genc.mywallet.databinding.FragmentHomeBinding
-import com.mehmet.genc.mywallet.entity.Card
-import com.mehmet.genc.mywallet.entity.Income
-import com.mehmet.genc.mywallet.viewmodel.CardViewModel
-import com.mehmet.genc.mywallet.viewmodel.IncomeViewModel
-import com.mehmet.genc.mywallet.viewmodel.PaymentViewModel
+import com.mehmet.genc.mywallet.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var viewModel: IncomeViewModel
+    private lateinit var viewModel: HomeViewModel
 
     val permission =
         arrayOf<String>(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
-
 
 
     override fun onCreateView(
@@ -43,12 +33,27 @@ class HomeFragment : Fragment() {
 
         requestPermission()
 
+        viewModel.cardList.observe(viewLifecycleOwner) {
+            var cardCount = it.size
+            binding.textViewNumberCard.text = "Number of card: $cardCount"
+        }
+
+        viewModel.paymentList.observe(viewLifecycleOwner) { payments ->
+            var total: Double = 0.0
+            payments.forEach{ payment ->
+                if(payment.amount.isNotEmpty()) {
+                    total += payment.amount.toDouble()
+                }
+            }
+            binding.textViewTotalPayment.text = "Total: $total ₺"
+        }
+
         return binding.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tempViewModel: IncomeViewModel by viewModels()
+        val tempViewModel: HomeViewModel by viewModels()
         viewModel = tempViewModel
 
     }
@@ -63,6 +68,12 @@ class HomeFragment : Fragment() {
         binding.cardViewPayments.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_receiptFragment)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getCards()
+        viewModel.getPayments()
     }
 
     private fun requestPermission() {

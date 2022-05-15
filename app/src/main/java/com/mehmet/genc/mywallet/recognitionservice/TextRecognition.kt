@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import androidx.navigation.Navigation
 import com.huawei.agconnect.AGConnectOptionsBuilder
 import com.huawei.hms.mlsdk.MLAnalyzerFactory
@@ -46,9 +47,10 @@ class TextRecognition(var context: Context, var viewModel: PaymentViewModel) {
                 getAmount(items),
                 getDate(items))
             viewModel.addPayment(payment)
+            Toast.makeText(context, "Successful", Toast.LENGTH_SHORT).show()
 
         }.addOnFailureListener {
-            Log.d("TextReco", "Başarısız")
+            Toast.makeText(context, "Failed, Please Try Again!", Toast.LENGTH_SHORT).show()
         }
 
         if(analyzer!=null) {
@@ -60,6 +62,7 @@ class TextRecognition(var context: Context, var viewModel: PaymentViewModel) {
             }
         }
     }
+
     private fun getDate(str: String): String {
         val regex = Regex("""\d{2}[\\. /-]\d{2}[\\. /-]\d{4}""")
         val dateList: Sequence<MatchResult> = regex.findAll(str)
@@ -89,6 +92,8 @@ class TextRecognition(var context: Context, var viewModel: PaymentViewModel) {
             total = list[lastIndex-1] - list[lastIndex]
             if(total == list[lastIndex-2]) {
                 return total.toString()
+            } else {
+                total = list[lastIndex]
             }
         } catch (e: ArrayIndexOutOfBoundsException) {
             total = 0.0
