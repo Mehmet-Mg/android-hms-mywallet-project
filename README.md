@@ -1,8 +1,12 @@
 # MyWallet - Cüzdanım
 Mehmet Genç
 
+# Kullanım Videosu
+[Ekran.Kaydi.-.15-05-2022.23.09.37.zip](https://github.com/MehmetGenc97/MyWallet/files/8695984/Ekran.Kaydi.-.15-05-2022.23.09.37.zip)
+
+
 # Kurulum
-* Android Studio'nun açılış ekranında bulunan Get From VCS butonuna tıkladıkdan sonra gelen pencerede VCS türünü Git şeçip URL kısmına https://github.com/MehmetGenc97/MyWallet linkini girerek Uygulamayı kolaylıkla indirebilirsiniz. Ayrıca ilgili linki tarayıcınıza girip daha sonra Github'da bulunan Code Butonu ile de zip olarak indirebilirsiniz.
+Android Studio'nun açılış ekranında bulunan Get From VCS butonuna tıkladıkdan sonra gelen pencerede VCS türünü Git şeçip URL kısmına https://github.com/MehmetGenc97/MyWallet linkini girerek Uygulamayı kolaylıkla indirebilirsiniz. Ayrıca ilgili linki tarayıcınıza girip daha sonra Github'da bulunan Code Butonu ile de zip olarak indirebilirsiniz.
 
 # Çalıştırma
 Birinci yöntem ile veya Zip dosyasını unzip ederek Android Studio'da açılan Proje Hem Huawei hem de Android cihazlar ile çalışabilmektedir. Bunun için cihazınızı geliştirici moduna aldıktan sonra bilgisayara bağlayıp Run butonu ile programı çalıştırabilirsiniz.
