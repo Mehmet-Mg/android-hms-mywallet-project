@@ -8,7 +8,7 @@ import com.mehmet.genc.mywallet.entity.Card
 import com.mehmet.genc.mywallet.entity.Income
 import com.mehmet.genc.mywallet.entity.Payment
 
-@Database(entities = [Card::class, Income::class, Payment::class], version = 1)
+@Database(entities = [Card::class, Payment::class, Income::class], version = 1)
 abstract class MyWalletDatabase : RoomDatabase() {
 
     abstract fun cardDaoService() : CardDaoService

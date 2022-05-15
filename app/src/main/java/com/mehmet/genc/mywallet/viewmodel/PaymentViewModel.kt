@@ -29,6 +29,7 @@ class PaymentViewModel(application: Application) : AndroidViewModel(application)
 
     fun deletePayment(payment: Payment) {
         paymentRepo.deletePayment(payment)
+        getPayments()
     }
 
     fun searchPayment(keyword: String) {

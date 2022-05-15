@@ -14,7 +14,4 @@ data class Card(
     @ColumnInfo(name = "number")        @NotNull val number: String,
     @ColumnInfo(name = "organization")  @NotNull val organization: String,
     @ColumnInfo(name = "expiry_date")   @NotNull val expiry_date: String,
-) : Serializable
-
-fun Card.getCardNumberWithStar() : String =
-    "${number.subSequence(0,4)} **** **** ${number.subSequence(12,15)}"
+) : BaseEntity

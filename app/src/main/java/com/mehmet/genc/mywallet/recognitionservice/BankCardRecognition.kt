@@ -18,8 +18,6 @@ import com.mehmet.genc.mywallet.viewmodel.CardViewModel
 
 class BankCardRecognition(var activity: Activity, var viewModel: CardViewModel) {
 
-    val permission =
-        arrayOf<String>(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
 
     private val callback: MLBcrCapture.Callback = object : MLBcrCapture.Callback {
         override fun onSuccess(bankCardResult: MLBcrCaptureResult?) {
@@ -43,10 +41,6 @@ class BankCardRecognition(var activity: Activity, var viewModel: CardViewModel) 
 
     }
 
-    init {
-        requestPermission()
-    }
-
     fun startCaptureActivity() {
 
         val config = MLBcrCaptureConfig.Factory()
@@ -55,20 +49,6 @@ class BankCardRecognition(var activity: Activity, var viewModel: CardViewModel) 
             .create()
         val bankCardCapture = MLBcrCaptureFactory.getInstance().getBcrCapture(config)
         bankCardCapture.captureFrame(activity, callback)
-    }
-
-    private fun requestPermission() {
-        if ((ContextCompat.checkSelfPermission(
-                activity.applicationContext,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ) != PackageManager.PERMISSION_GRANTED)
-            && (ContextCompat.checkSelfPermission(
-                activity.applicationContext,
-                Manifest.permission.CAMERA
-            ) != PackageManager.PERMISSION_GRANTED)
-        ) {
-            ActivityCompat.requestPermissions(activity, permission, 111)
-        }
     }
 
 }

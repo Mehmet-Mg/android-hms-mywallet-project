@@ -24,7 +24,6 @@ class PaymentRepository(var context: Context) {
     fun getAllPayments() {
         CoroutineScope(Dispatchers.Main).launch {
             paymentList.value = database.paymentDaoService().getPayments()
-
         }
     }
 
@@ -32,6 +31,7 @@ class PaymentRepository(var context: Context) {
         CoroutineScope(Dispatchers.Main).launch {
             database.paymentDaoService().addPayment(payment)
         }
+        getAllPayments()
     }
 
     fun updatePayment(payment: Payment) {

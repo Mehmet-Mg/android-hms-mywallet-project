@@ -6,12 +6,15 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.mehmet.genc.mywallet.R
 import com.mehmet.genc.mywallet.adapter.PaymentAdapter
 import com.mehmet.genc.mywallet.databinding.FragmentReceiptBinding
@@ -49,18 +52,11 @@ class ReceiptFragment : Fragment() {
         viewModel = tempViewModel
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.getPayments()
-    }
-
-
     fun requestBitmap() {
         Intent(Intent.ACTION_GET_CONTENT).also {
             it.type = "image/*"
             startActivityForResult(it, PICK_IMAGE_REQUEST)
         }
-        viewModel.getPayments()
     }
 
     fun captureBitmap() {
@@ -91,5 +87,6 @@ class ReceiptFragment : Fragment() {
                 textRecognition.analyzeText(bitmap)
             }
         }
+
     }
 }

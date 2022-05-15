@@ -22,32 +22,32 @@ class CardRepository(var context: Context) {
     }
 
     fun getAllCards() {
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.Main).launch {
             cardList.value = database.cardDaoService().getCards()
         }
     }
 
     fun addCard(card: Card) {
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.Main).launch {
             database.cardDaoService().addCard(card)
         }
     }
 
     fun updateCard(card: Card) {
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.Main).launch {
             database.cardDaoService().updateCard(card)
         }
     }
 
     fun deleteCard(card: Card) {
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.Main).launch {
             database.cardDaoService().deleteCard(card)
         }
         getAllCards()
     }
 
     fun searchCard(keyword: String) {
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.Main).launch {
             cardList.value = database.cardDaoService().searchCard(keyword)
         }
     }

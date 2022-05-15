@@ -1,5 +1,7 @@
 package com.mehmet.genc.mywallet.fragment
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +9,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.huawei.hms.mlplugin.card.bcr.MLBcrCapture
@@ -24,7 +28,10 @@ import com.mehmet.genc.mywallet.viewmodel.PaymentViewModel
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: IncomeViewModel
-    var sa: Int = 1
+
+    val permission =
+        arrayOf<String>(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+
 
 
     override fun onCreateView(
@@ -34,11 +41,7 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding= FragmentHomeBinding.inflate(layoutInflater, container, false)
 
-        viewModel.incomeList.observe(viewLifecycleOwner) {
-            for (i in it) {
-                Log.d("Deeneme", "${i.id}  ${i.name}")
-            }
-        }
+        requestPermission()
 
         return binding.root
     }
@@ -59,6 +62,20 @@ class HomeFragment : Fragment() {
 
         binding.cardViewPayments.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_receiptFragment)
+        }
+    }
+
+    private fun requestPermission() {
+        if ((ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED)
+            && (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.CAMERA
+            ) != PackageManager.PERMISSION_GRANTED)
+        ) {
+            ActivityCompat.requestPermissions(requireActivity(), permission, 111)
         }
     }
 }

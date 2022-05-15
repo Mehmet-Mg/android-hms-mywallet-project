@@ -34,7 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
-                android:text="@{payment.name}"/>
+                android:text="@{payment.name}"
+                android:textColorHint="#616161" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -78,7 +79,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Update Receipt"
+            android:text="@string/update_payment"
+            android:background="@drawable/rounded_corner"
+            android:textAllCaps="false"
             android:onClick="@{() -> receiptDetailFragment.updatePayment(payment.id, editTextReceiptName.getText().toString(), editTextReceiptAmount.getText().toString(), editTextDate.getText().toString())}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

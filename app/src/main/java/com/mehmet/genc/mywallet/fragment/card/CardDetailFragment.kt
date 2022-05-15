@@ -1,11 +1,14 @@
 package com.mehmet.genc.mywallet.fragment.card
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavArgs
@@ -41,8 +44,17 @@ class CardDetailFragment : Fragment() {
         viewModel = tempViewModel
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+
     fun updateCard(cardId: Int, cardName: String, cardNumber: String, cardOrganization: String, cardExpieryDate: String) {
-        viewModel.updateCard(Card(cardId, cardName,cardNumber,cardOrganization, cardExpieryDate))
-        Toast.makeText(context, "The Card Updated", Toast.LENGTH_SHORT).show()
+        if(binding.editTextCardNumber.length() == 16) {
+            viewModel.updateCard(Card(cardId, cardName,cardNumber,cardOrganization, cardExpieryDate))
+            Toast.makeText(context, "The Card Updated", Toast.LENGTH_SHORT).show()
+        } else {
+            binding.editTextCardNumber.error = "Card number must be 16 digit"
+        }
     }
 }

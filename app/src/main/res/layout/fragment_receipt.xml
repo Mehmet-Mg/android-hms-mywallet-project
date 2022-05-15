@@ -41,13 +41,13 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/oval_corner"
+                    android:background="@drawable/rounded_corner"
                     android:src="@drawable/ic_pick_photo" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pick a Photo"
+                    android:text="@string/pick_a_photo"
                     android:textAlignment="center"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -60,7 +60,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="From Phone"
+                    android:text="@string/from_phone"
                     android:textAlignment="center"
                     android:textSize="12sp" />
 
@@ -89,13 +89,13 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/oval_corner"
+                    android:background="@drawable/rounded_corner"
                     android:src="@drawable/ic_camera" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Capture Photo"
+                    android:text="@string/capture_photo"
                     android:textAlignment="center"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -108,7 +108,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="From Camera"
+                    android:text="@string/from_camera"
                     android:textAlignment="center"
                     android:textSize="12sp" />
 
@@ -116,6 +116,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/paymentRecyclerView"
             android:layout_width="409dp"
             android:layout_height="621dp"
             android:adapter="@{paymentAdapter}"

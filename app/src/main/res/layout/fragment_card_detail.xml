@@ -51,6 +51,8 @@
                 android:id="@+id/editTextCardNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="16"
                 android:hint="Card Number"
                 android:text="@{cardObject.number}"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -88,18 +90,23 @@
                 android:id="@+id/editTextExpiryDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="date"
+                android:maxLength="5"
                 android:hint="Expiry Date"
                 android:text="@{cardObject.expiry_date}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/buttonUpdateReceipt"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:text="Update The Card"
-            android:textAllCaps="false"
+            android:background="@drawable/rounded_corner"
             android:onClick="@{() -> cardDetailFragment.updateCard(cardObject.id, editTextCardName.getText().toString(), editTextCardNumber.getText().toString(), editTextCardOrganization.getText().toString(), editTextExpiryDate.getText().toString())}"
+            android:text="@string/update_the_card"
+            android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

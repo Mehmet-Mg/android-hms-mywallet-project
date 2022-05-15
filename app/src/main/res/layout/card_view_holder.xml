@@ -45,7 +45,7 @@
                     android:layout_width="48dp"
                     android:layout_height="36dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="32dp"
                     android:background="@drawable/rounded_corner"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewBankCard" />
@@ -55,9 +55,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="32dp"
                     android:text='@{card.number.subSequence(0,4) + " **** **** " + card.number.subSequence(12, 16)}'
-                    android:textSize="32dp"
+                    android:textSize="32sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view"
@@ -67,9 +67,9 @@
                     android:id="@+id/textViewCardExpieryDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="32dp"
                     android:layout_marginEnd="128dp"
-                    android:layout_marginBottom="36dp"
+                    android:layout_marginBottom="32dp"
                     android:text="@{card.expiry_date}"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -79,24 +79,25 @@
 
                 <ImageView
                     android:id="@+id/deleteButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="32dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.361"
-                    app:srcCompat="@drawable/ic_delete" />
+                    app:layout_constraintVertical_bias="0.32"
+                    app:srcCompat="@drawable/ic_delete"
+                    android:contentDescription="TODO" />
 
                 <ImageView
                     android:id="@+id/imageViewCopy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewCardNumber"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.45"
                     app:layout_constraintStart_toEndOf="@+id/textViewCardNumber"
-                    app:layout_constraintTop_toBottomOf="@+id/deleteButton"
+                    app:layout_constraintTop_toTopOf="@+id/textViewCardNumber"
                     app:srcCompat="@drawable/ic_copy" />
 
 

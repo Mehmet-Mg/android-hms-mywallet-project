@@ -2,13 +2,17 @@ package com.mehmet.genc.mywallet.recognitionservice
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import androidx.navigation.Navigation
 import com.huawei.agconnect.AGConnectOptionsBuilder
 import com.huawei.hms.mlsdk.MLAnalyzerFactory
 import com.huawei.hms.mlsdk.common.MLApplication
 import com.huawei.hms.mlsdk.common.MLFrame
 import com.huawei.hms.mlsdk.text.MLRemoteTextSetting
 import com.mehmet.genc.mywallet.entity.Payment
+import com.mehmet.genc.mywallet.fragment.receipt.ReceiptFragmentDirections
 import com.mehmet.genc.mywallet.viewmodel.PaymentViewModel
 import java.io.IOException
 
@@ -35,13 +39,13 @@ class TextRecognition(var context: Context, var viewModel: PaymentViewModel) {
         val task = analyzer!!.asyncAnalyseFrame(frame)
         task.addOnSuccessListener {
             val items = it.stringValue
-            viewModel.addPayment(
-                Payment(
-                    0,
-                    "${items.lines().get(0)}",
-                    getAmount(items),
-                    getDate(items))
-            )
+
+            val payment = Payment(
+                0,
+                "${items.lines().get(0)}",
+                getAmount(items),
+                getDate(items))
+            viewModel.addPayment(payment)
 
         }.addOnFailureListener {
             Log.d("TextReco", "Başarısız")
@@ -50,6 +54,7 @@ class TextRecognition(var context: Context, var viewModel: PaymentViewModel) {
         if(analyzer!=null) {
             try {
                 analyzer.stop()
+                viewModel.getPayments()
             } catch (e: IOException) {
 
             }

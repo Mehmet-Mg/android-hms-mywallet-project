@@ -76,6 +76,7 @@ dependencies {
     // HMS ML Kit Bank Card Recognition
     implementation 'com.huawei.hms:ml-computer-card-bcr:3.4.0.301'
 
+
     // HMS ML Kit Text Recognition
     implementation 'com.huawei.hms:ml-computer-vision-ocr:3.4.0.301'
     implementation 'com.huawei.hms:ml-computer-vision-ocr-latin-model:3.4.0.301'

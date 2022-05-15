@@ -5,7 +5,7 @@ import com.mehmet.genc.mywallet.entity.Payment
 
 @Dao
 interface PaymentDaoService {
-    @Query("Select * from payment")
+    @Query("Select * From payment")
     suspend fun getPayments() : List<Payment>
 
     @Insert
